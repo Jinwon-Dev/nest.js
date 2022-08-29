@@ -31,4 +31,9 @@ export class BoardsService {
     // id로 게시물 찾기
     return this.boards.find((board) => board.id === id);
   }
+
+  deleteBoard(id: string): void {
+    // 게시물 지우기 기능
+    this.boards = this.boards.filter((board) => board.id !== id);
+  }
 }
