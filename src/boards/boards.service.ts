@@ -29,11 +29,18 @@ export class BoardsService {
 
   getBoardById(id: string): Board {
     // id로 게시물 찾기
-    return this.boards.find((board) => board.id === id);
+    return this.boards.find((board) => board.id === id); // 특정 게시물 정보 return
   }
 
   deleteBoard(id: string): void {
     // 게시물 지우기 기능
     this.boards = this.boards.filter((board) => board.id !== id);
+  }
+
+  updateBoardStatus(id: string, status: BoardStatus): Board {
+    // 게시물 상태 업데이트
+    const board = this.getBoardById(id);
+    board.status = status;
+    return board;
   }
 }
