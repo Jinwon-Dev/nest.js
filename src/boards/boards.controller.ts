@@ -6,6 +6,8 @@ import {
   Param,
   Patch,
   Post,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { BoardsService } from './boards.service';
 import { Board, BoardStatus } from './board.model';
@@ -22,6 +24,7 @@ export class BoardsController {
   }
 
   @Post()
+  @UsePipes(ValidationPipe) // 파이프 생성(유효성 체크)
   createBoard(
     // 게시물 생성
     @Body() createBoardDto: CreateBoardDto, // DTO 적용
